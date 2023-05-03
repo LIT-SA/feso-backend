@@ -1,0 +1,9 @@
+fastapi
+python-multipart
+numpy
+openai
+opencv_python
+pydantic
+pytesseract
+starlette
+uvicorn
