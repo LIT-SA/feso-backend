@@ -5,9 +5,8 @@ from typing import Optional
 import numpy as np
 import uvicorn as uvicorn
 from fastapi import FastAPI, File, HTTPException, Request, UploadFile
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
-from starlette.responses import StreamingResponse
 
 from chatGPT import ChatGPT
 from OCRImages import OCRImage
