@@ -56,6 +56,7 @@ async def get_chatbot_response(request: Request, text: Optional[str] = None, ima
         try:
             image_data = io.BytesIO(image.file.read())
             image_text = ocr.process_image(image_data)
+            print(image_text)
             if image_text.isspace():
                 raise HTTPException(status_code=400, detail="Could not extract text from image. Please try again.")
             user_input = image_text.strip()
