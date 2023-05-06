@@ -1,8 +1,13 @@
 from typing import Optional
 import logging
 import openai
+import os
 
-openai.api_key = "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"
+api_key = os.environ.get("OPENAI_API_KEY")
+if not api_key:
+    raise ValueError("OPENAI_API_KEY secret is not set")
+openai.api_key = api_key
+
 model_engine = "text-davinci-003"
 
 
