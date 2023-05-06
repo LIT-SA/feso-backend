@@ -60,7 +60,7 @@ async def get_chatbot_response(
     # If text input is provided, use it as the input to the chatbot
     if text:
         user_input = text.strip()
-        else:
+    else:
         # If only an image is provided, use it for OCR processing and chatbot input
         ocr = OCRImage()
         try:
