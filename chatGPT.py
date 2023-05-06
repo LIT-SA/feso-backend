@@ -2,7 +2,7 @@ from typing import Optional
 import logging
 import openai
 
-openai.api_key = "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"
+openai.api_key = "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"
 model_engine = "text-davinci-003"
 
 
