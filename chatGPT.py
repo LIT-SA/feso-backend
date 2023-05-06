@@ -33,4 +33,4 @@ class ChatGPT:
             return text
         except Exception as e:
             logging.error(f"Error occurred during API call: {e}")
-            return "there is an error calling the chatggpt api"
+            return text
