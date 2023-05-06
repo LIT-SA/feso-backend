@@ -36,12 +36,6 @@ class OutputModel(BaseModel):
 # Configure logging
 logging.basicConfig(filename="chatbot.log", level=logging.INFO)
 
-
-@app.get("/hello-world")
-async def root():
-    return {"message": "Hello World"}
-
-
 @app.exception_handler(HTTPException)
 async def http_exception_handler(request, exc):
     return JSONResponse(
@@ -66,22 +60,17 @@ async def get_chatbot_response(
     # If text input is provided, use it as the input to the chatbot
     if text:
         user_input = text.strip()
-    else:
+        else:
         # If only an image is provided, use it for OCR processing and chatbot input
         ocr = OCRImage()
         try:
             image_data = io.BytesIO(image.file.read())
             image_text = ocr.process_image(image_data)
             if image_text.isspace():
-                raise HTTPException(
-                    status_code=400,
-                    detail="Could not extract text from image. Please try again.",
-                )
+                raise HTTPException(status_code=400, detail="Could not extract text from image. Please try again.")
             user_input = image_text.strip()
         except Exception as e:
-            raise HTTPException(
-                status_code=400, detail="Error processing image. Please try again."
-            )
+            raise HTTPException(status_code=400, detail="Error processing image. Please try again.")
 
     try:
         response = chatbot.get_completion(user_input)
